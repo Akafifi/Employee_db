@@ -23,6 +23,10 @@ function mainMenu() {
                 value: 'VIEW_ROLES'
             },
             {
+                name: 'view all employees',
+                value: 'VIEW_EMPLOYEES'
+            },
+            {
                 name:'quit',
                 value: 'QUIT'
             }
@@ -64,6 +68,18 @@ function viewRoles() {
         let roles = rowes;
         console.log('\n');
         console.table(roles);
+    })
+    .then(() => {
+        mainMenu();
+    });
+}
+
+function viewEmployees() {
+    db.getAllEmployees()
+    .then(([rowes]) => {
+        let employees = rowes;
+        console.log('\n');
+        console.table(employees);
     })
     .then(() => {
         mainMenu();
