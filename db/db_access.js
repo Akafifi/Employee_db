@@ -20,17 +20,22 @@ class Db_access {
         );
 
     }
-    // getAllEmployees() {
-    //     return this.connection.promise().query(
-    //         'SELECT employee.id, employee.first_name, employee.last_name, employee.role_id, employee.manager_id FROM employee INNER JOIN role on employee.department_id = employee.id;'
-    //     );
-    // }
 
    getAllEmployees() {
         // all ees: id, first name, last name, title, department, salary, manager
         return this.connection.promise().query(
-            'SELECT employee.id, employee.first_name, employee.last_name, role.id, manager.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON  role.department_id = department.id LEFT JOIN employee manager ON manager.id = employee.manager_id;');
-      };
+            'SELECT * FROM employee;'
+            // 'SELECT employee.id, employee.first_name, employee.last_name, role.id, manager.id FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON  role.department_id = department.id LEFT JOIN employee manager ON manager.id = employee.manager_id;');
+      )};
+
+    
+    getNewEmployee() {
+        return this.connection.promise().query(
+            'UPDATE employee
+                SET name = 'Randy Moss'
+                WHERE id = 9'
+        )
+    }
 }
 
 module.exports = new Db_access(connection);
