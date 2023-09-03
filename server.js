@@ -171,7 +171,7 @@ function askName() {
     ]);
 }
 
-function updateEmployees() {
+function addEmployees() {
     db.getNewEmployee()
     .then(([rowes]) => {
         let id
